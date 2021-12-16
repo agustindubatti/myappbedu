@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.5.0)
+  - AudioPlayerSwift (2.0.0)
+  - SwiftySound (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AudioPlayerSwift
+  - SwiftySound
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AudioPlayerSwift
+    - SwiftySound
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  AudioPlayerSwift: 26d1c95f177f5bd195be482a41538d7ab8d04dd9
+  SwiftySound: 9eb28bb14edb601b40027e44319e0ef8383f88bf
+
+PODFILE CHECKSUM: 36761c40663a14bb9623869dcc7ecd2edc1bccb2
+
+COCOAPODS: 1.11.2
