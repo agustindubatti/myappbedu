@@ -169,16 +169,11 @@
 			isa = PBXGroup;
 			children = (
 				7F7EA29F276BBE0400508616 /* Commons */,
-				7FD17DB627587F130006D22A /* Controller */,
+				7FD17DB627587F130006D22A /* ViewModel */,
 				7FD17DAD2757FAD60006D22A /* Models */,
 				7FD17DA92757F82A0006D22A /* Recursos */,
 				7FD17DA62757F4CA0006D22A /* Views */,
 				7FC4F6602746EA8800907C44 /* Utils */,
-				7FBB067D2720827F00C69935 /* Assets.xcassets */,
-				7FBB06822720827F00C69935 /* Info.plist */,
-				7FBB06BE27208E4800C69935 /* Localizable.strings */,
-				7FC56B23274465730002BC50 /* CleanExample-Bridging-Header.h */,
-				7F7EA2AA276BFF4F00508616 /* Model.xcdatamodeld */,
 			);
 			path = CleanExample;
 			sourceTree = "<group>";
@@ -223,6 +218,10 @@
 		7FD17DA92757F82A0006D22A /* Recursos */ = {
 			isa = PBXGroup;
 			children = (
+				7FC56B23274465730002BC50 /* CleanExample-Bridging-Header.h */,
+				7FBB06822720827F00C69935 /* Info.plist */,
+				7FBB067D2720827F00C69935 /* Assets.xcassets */,
+				7FBB06BE27208E4800C69935 /* Localizable.strings */,
 				7FC56B29274466B10002BC50 /* bensound-ukulele.mp3 */,
 				7FC56B26274465740002BC50 /* stegosaurus-studio.gif */,
 				7FC56B25274465740002BC50 /* UIImage+animatedGIF.h */,
@@ -234,6 +233,7 @@
 		7FD17DAD2757FAD60006D22A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7F7EA2AA276BFF4F00508616 /* Model.xcdatamodeld */,
 				7F4490EC273854C00065061C /* Protocols.swift */,
 				7FD17DA72757F4E30006D22A /* CurrentSong.swift */,
 				7FAECF5B273110C4005F09C6 /* Modelos.swift */,
@@ -241,7 +241,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7FD17DB627587F130006D22A /* Controller */ = {
+		7FD17DB627587F130006D22A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				7FBB06742720827D00C69935 /* AppDelegate.swift */,
@@ -252,7 +252,7 @@
 				7F8C3B7C2735A5A100D71927 /* TracksTableTableViewController.swift */,
 				7FD17DB227580F420006D22A /* PickerViewController.swift */,
 			);
-			path = Controller;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B90B0863E686D67AB7FAD680 /* Frameworks */ = {
