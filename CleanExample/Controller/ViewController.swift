@@ -47,18 +47,10 @@ class ViewController: UIViewController {
         }
         
             if model.user1.user == userString && model.user1.pass == passString {
-                savedData()
+                saveData()
                 downloadTracks()
                 goToMainController()
-                /*RestServiceManager.shared.getToServer(responseType: [Song].self, method: .get, endpoint: "songs") {
-                    status, data in
-                           misTracks = [Song]()
-                           if let _data = data {
-                               misTracks = _data
-                               //self.tableView.reloadData()
-                           }
-                       }*/
-                print(misTracks)
+            
                 print ("AUTH OK")
             }else{
                 username.errorAnimated()
@@ -117,80 +109,84 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "register", sender: self)
     }
     
-    func savedData() {
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            let context = appDelegate.managedObjectContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tracklist")
-            request.returnsObjectsAsFaults = false
+    func saveData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.managedObjectContext
+        
+        let request =  NSFetchRequest<NSFetchRequestResult>(entityName: "TrackList")
+        request.returnsObjectsAsFaults = false
+        do{
+            let result = try context!.fetch(request)
+            misTracks = [Song]()
             
-            do {
-                let result = try context!.fetch(request) // fetch nos da elementos no nulos
-                misTracks = [Song]()
+            for data in result as! [NSManagedObject] {
+                               
                 
-                for data in result as! [NSManagedObject] {
-                    let title = data.value(forKey: "title") as? String
-                    let artist = data.value(forKey: "artist") as? String
-                    let song_id = data.value(forKey: "song_id") as? String
-                    let album = data.value(forKey: "album") as? String
-                    let genre = data.value(forKey: "genre") as? String
+                let artist = data.value(forKey: "artist") as? String
+                let title = data.value(forKey: "title") as? String
+                let song_id = data.value(forKey: "song_id") as? String
+                let genre = data.value(forKey: "genre") as? String
+                let album = data.value(forKey: "album") as? String
+                
+                let song = Song(title: title ?? "", artist: artist ?? "", album: album ?? "", song_id: song_id ?? "", genre: genre ?? "")
                     
-                    let track = Song(title: title ?? "",
-                                      artist: artist ?? "",
-                                      album: album ?? "",
-                                     song_id: song_id ?? "",
-                                      genre: genre ?? ""
-                    )
-                    misTracks.append(track)
-                }
-                
-            } catch {
-                print("Falle al obtener info de la BD \(error), \(error.localizedDescription)")
+                misTracks.append(song)
             }
-            
-    //        if false {
-            self.downloadTracks()
-    //        }
-            
         }
+        catch{
+            print("Falle al obtener info en la BD, \(error), \(error.localizedDescription)")
+        }
+        
+        //Consigna de tener internet en un if
+        if APIManager().checkConnectivity(){
+            self.downloadTracks()
+        }
+    }
     
-    func downloadTracks() {
-          guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-          let context = appDelegate.managedObjectContext
-          
-          RestServiceManager.shared.getToServer(responseType: [Song].self, method: .get, endpoint: "songs") { status, data in
-              misTracks = [Song]()
-              if let _data = data {
-                  misTracks = _data
-                  if let _context = context {
-                      // Eliminar contenido
-                      let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Tracklist")
-                      let deleteRquest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                      do {
-                          try appDelegate.persistentStoreCoordinator?.execute(deleteRquest, with: _context)
-                      } catch {
-                          print(error)
-                      }
-                      //Fin eliminar contenido
-                      
-                      //Agregar contenido a CoreData
-                      for item in _data {
-                          let tracksEntity = NSEntityDescription.insertNewObject(forEntityName: "Tracklist", into: _context)
-                          tracksEntity.setValue(item.artist, forKey: "artist")
-                          tracksEntity.setValue(item.title, forKey: "title")
-                          tracksEntity.setValue(item.song_id , forKey: "song_id")
-                          tracksEntity.setValue(item.genre, forKey: "genre")
-                          tracksEntity.setValue(item.album, forKey: "album")
-                          
-                          do {
-                              try context?.save()
-                          } catch {
-                              print("No se guardo la info \(error), \(error.localizedDescription)" )
-                          }
-                      }
-                  }
-              }
-          }
-      }
+    func downloadTracks(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let context = appDelegate.managedObjectContext
+        
+        RestServiceManager.shared.getToServer(responseType: [Song].self, method: .get, endpoint: "songs") { status, data in
+            misTracks = [Song]()
+            
+            if let _data = data {
+                misTracks = _data
+                
+                if let _context = context{
+                    
+                    //Eliminar contenido
+                    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "TrackList")
+                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                    
+                    do{
+                        try  appDelegate.persistentStoreCoordinator?.execute(deleteRequest, with: _context)
+                    }
+                    catch{
+                        print(error)
+                    }
+                    //FIN eliminar contenido
+                    //===================================
+                    //Se agrega info
+                    for item in _data {
+                        guard let tracksEntity = NSEntityDescription.insertNewObject(forEntityName: "TrackList", into: _context) as? NSManagedObject else {return}
+                        tracksEntity.setValue(item.artist, forKey: "artist")
+                        tracksEntity.setValue(item.title, forKey: "title")
+                        tracksEntity.setValue(item.song_id , forKey: "song_id")
+                        tracksEntity.setValue(item.genre, forKey: "genre")
+                        tracksEntity.setValue(item.album, forKey: "album")
+                        
+                        do{
+                            try _context.save()
+                        }
+                        catch{
+                            print("No se guardo la info. \(error), \(error.localizedDescription)")
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     
     

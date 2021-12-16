@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class TracksTableTableViewController: UITableViewController, ButtonOnCellDelegate {
@@ -23,6 +24,7 @@ class TracksTableTableViewController: UITableViewController, ButtonOnCellDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tableView.reloadData()
         /*let callBack: ( [Song]?, Error? ) -> () = { canciones, error in
           if error != nil {
             print("No se pudo obtener la lista de canciones")
@@ -102,8 +104,6 @@ class TracksTableTableViewController: UITableViewController, ButtonOnCellDelegat
     
     @objc func agregarCancionPorTimer(){
         
-        print("Se llama la funcion de agregar por timer")
-        
         let song: Song = Song(title:"Cancion Agregada",artist:"Artista", album:"Test", song_id:"99", genre: "Genero")
         
         
@@ -112,6 +112,8 @@ class TracksTableTableViewController: UITableViewController, ButtonOnCellDelegat
             self.tableView.reloadData()
         }
     }
+    
+    
 
 
 

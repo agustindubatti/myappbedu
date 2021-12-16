@@ -25,13 +25,11 @@ struct Song: Codable, Hashable {
     let song_id: String?
     let genre: String?
     var isPlaying: Bool? //= false
-    //let duration: String?
     
     enum CodingKeys: String, CodingKey {
         case artist
         case title = "name"
         case album
-        //case duration
         case genre
         case song_id = "song_id"
     }

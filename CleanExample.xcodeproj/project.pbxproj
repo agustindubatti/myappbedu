@@ -14,6 +14,7 @@
 		7F7EA2A1276BBE1300508616 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA2A0276BBE1300508616 /* Extension.swift */; };
 		7F7EA2A3276BD3B500508616 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA2A2276BD3B500508616 /* DownloadManager.swift */; };
 		7F7EA2A5276BDBED00508616 /* RestServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA2A4276BDBED00508616 /* RestServiceManager.swift */; };
+		7F7EA2AC276BFF4F00508616 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F7EA2AA276BFF4F00508616 /* Model.xcdatamodeld */; };
 		7F8C3B792735733700D71927 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C3B782735733700D71927 /* AudioPlayerController.swift */; };
 		7F8C3B7D2735A5A100D71927 /* TracksTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8C3B7C2735A5A100D71927 /* TracksTableTableViewController.swift */; };
 		7FAECF5A273104A1005F09C6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAECF59273104A1005F09C6 /* RegisterViewController.swift */; };
@@ -65,7 +66,7 @@
 		7F7EA2A0276BBE1300508616 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7F7EA2A2276BD3B500508616 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		7F7EA2A4276BDBED00508616 /* RestServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestServiceManager.swift; sourceTree = "<group>"; };
-		7F7EA2A7276BE4D400508616 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		7F7EA2AB276BFF4F00508616 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7F8C3B782735733700D71927 /* AudioPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
 		7F8C3B7C2735A5A100D71927 /* TracksTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksTableTableViewController.swift; sourceTree = "<group>"; };
 		7FAECF59273104A1005F09C6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		7FBB06B827208DFE00C69935 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		7FBB06BD27208E4800C69935 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7FBB06BF27208E4B00C69935 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7FBB06C22720910F00C69935 /* Secret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secret.xcconfig; sourceTree = "<group>"; };
 		7FC4F6612746EAA000907C44 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		7FC4F6672746ED7100907C44 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		7FC56B23274465730002BC50 /* CleanExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CleanExample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -146,9 +146,6 @@
 		7FBB06682720827D00C69935 = {
 			isa = PBXGroup;
 			children = (
-				7F7EA2A6276BE4D400508616 /* Model.xcdatamodeld */,
-				7F7EA29F276BBE0400508616 /* Commons */,
-				7FBB06C22720910F00C69935 /* Secret.xcconfig */,
 				7FBB06732720827D00C69935 /* CleanExample */,
 				7FBB068A2720827F00C69935 /* CleanExampleTests */,
 				7FBB06942720827F00C69935 /* CleanExampleUITests */,
@@ -171,6 +168,7 @@
 		7FBB06732720827D00C69935 /* CleanExample */ = {
 			isa = PBXGroup;
 			children = (
+				7F7EA29F276BBE0400508616 /* Commons */,
 				7FD17DB627587F130006D22A /* Controller */,
 				7FD17DAD2757FAD60006D22A /* Models */,
 				7FD17DA92757F82A0006D22A /* Recursos */,
@@ -180,6 +178,7 @@
 				7FBB06822720827F00C69935 /* Info.plist */,
 				7FBB06BE27208E4800C69935 /* Localizable.strings */,
 				7FC56B23274465730002BC50 /* CleanExample-Bridging-Header.h */,
+				7F7EA2AA276BFF4F00508616 /* Model.xcdatamodeld */,
 			);
 			path = CleanExample;
 			sourceTree = "<group>";
@@ -480,6 +479,7 @@
 				7F8C3B7D2735A5A100D71927 /* TracksTableTableViewController.swift in Sources */,
 				7F8C3B792735733700D71927 /* AudioPlayerController.swift in Sources */,
 				7FD17DA82757F4E30006D22A /* CurrentSong.swift in Sources */,
+				7F7EA2AC276BFF4F00508616 /* Model.xcdatamodeld in Sources */,
 				7F4490ED273854C00065061C /* Protocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1011,12 +1011,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7F7EA2A6276BE4D400508616 /* Model.xcdatamodeld */ = {
+		7F7EA2AA276BFF4F00508616 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7F7EA2A7276BE4D400508616 /* Model.xcdatamodel */,
+				7F7EA2AB276BFF4F00508616 /* Model.xcdatamodel */,
 			);
-			currentVersion = 7F7EA2A7276BE4D400508616 /* Model.xcdatamodel */;
+			currentVersion = 7F7EA2AB276BFF4F00508616 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
