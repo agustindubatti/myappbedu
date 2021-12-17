@@ -25,22 +25,26 @@ class ViewController: UIViewController {
         
         guard let userString = username.text, userString.count > 0 else{
             print("Email vacio")
+            self.showSimplePopUpAlert("Error","El email no puede estar vacio")
             tipoError = 1
             return
         }
         
         guard userString.isValidEmail(), userString.count >= 10 else{
             print("El email no cumple con el formato requerido")
+            self.showSimplePopUpAlert("Error","El email no cumple con los requisitos")
             tipoError = 2
             return
         }
         
         guard let passString = password.text, passString.count > 0 else{
             print("Password vacia")
+            self.showSimplePopUpAlert("Error","La contraseña no puede estar vacia")
             tipoError = 3
             return
         }
         guard passString.count <= 10 else{
+            self.showSimplePopUpAlert("Error","La contraseña debe tener menos de 10 caracteres")
             print("Password con mas de 10 caracteres")
             tipoError = 4
             return
